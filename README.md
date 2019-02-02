@@ -1,6 +1,6 @@
 # terminate
 
-[terminate] is a simple crate to abstract logic to terminate threads, coroutines and the like
+[terminate] is a simple crate to abstract logic to terminate threads, coroutines and the like.
 
 
 ## Licensing
