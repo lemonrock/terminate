@@ -7,6 +7,7 @@
 #![allow(non_camel_case_types)]
 #![deny(missing_docs)]
 #![deny(unreachable_patterns)]
+#![feature(backtrace)]
 
 
 //! #terminate
@@ -15,7 +16,19 @@
 
 
 use std::any::Any;
-use std::panic::PanicInfo;
+use std::panic::{PanicInfo, Location};
+use std::sync::Arc;
+use std::sync::atomic::AtomicU64;
+use std::sync::atomic::Ordering::AcqRel;
+use std::sync::atomic::Ordering::Acquire;
+use std::thread;
+use std::backtrace::{Backtrace, BacktraceStatus};
+use std::thread::{ThreadId, Thread};
+use std::borrow::Cow;
 
 
+include!("panic_payload_to_cause.rs");
+include!("ParsedPanic.rs");
+include!("ParsedPanicErrorLogger.rs");
+include!("SimpleTerminate.rs");
 include!("Terminate.rs");

@@ -11,14 +11,19 @@ pub trait Terminate: Send + Sync
 	/// Begin termination (due to a panic).
 	///
 	/// Can be called more than once, but should only be called once per thread.
-	fn begin_termination_due_to_panic(&self, panic_info: &PanicInfo);
+	#[inline(always)]
+	fn begin_termination_due_to_panic(&self, panic_info: &PanicInfo)
+	{
+		self.begin_termination_due_to_irrecoverable_error(panic_info.payload(), panic_info.location())
+	}
 
 	/// Begin termination (due to an irrecoverable error).
 	///
 	/// Can be called more than once, but should only be called once per thread.
 	///
 	/// `irrecoverable_error` is the same type as `PanicInfo.payload`.
-	fn begin_termination_due_to_irrecoverable_error(&self, irrecoverable_error: &(dyn Any + Send));
+	/// `location` can be `None`.
+	fn begin_termination_due_to_irrecoverable_error(&self, irrecoverable_error: &(dyn Any + Send), location: Option<&Location>);
 
 	/// Should finish.
 	fn should_finish(&self) -> bool;
