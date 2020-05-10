@@ -14,12 +14,8 @@
 //! Is a rust crate to abstract logic to terminate threads, coroutines and the like.
 
 
-use ::std::any::Any;
-use ::std::panic::PanicInfo;
-use ::std::sync::Arc;
-use ::std::sync::atomic::AtomicBool;
-use ::std::sync::atomic::Ordering::Relaxed;
+use std::any::Any;
+use std::panic::PanicInfo;
 
 
-include!("SimpleTerminate.rs");
 include!("Terminate.rs");
