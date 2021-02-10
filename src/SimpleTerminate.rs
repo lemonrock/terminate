@@ -67,7 +67,7 @@ impl<PPEL: ParsedPanicErrorLogger> SimpleTerminate<PPEL>
 	#[inline(always)]
 	fn compare_and_swap(&self, termination_reason: u64)
 	{
-		self.lock.compare_and_swap(Self::Continue, termination_reason, AcqRel);
+		let _ = self.lock.compare_exchange(Self::Continue, termination_reason, AcqRel, Acquire);
 	}
 
 	#[inline(always)]
