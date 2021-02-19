@@ -16,14 +16,17 @@
 
 
 use std::any::Any;
-use std::panic::{PanicInfo, Location};
+use std::panic::PanicInfo;
+use std::panic::Location;
 use std::sync::Arc;
 use std::sync::atomic::AtomicU64;
 use std::sync::atomic::Ordering::AcqRel;
 use std::sync::atomic::Ordering::Acquire;
 use std::thread;
-use std::backtrace::{Backtrace, BacktraceStatus};
-use std::thread::{ThreadId, Thread};
+use std::backtrace::Backtrace;
+use std::backtrace::BacktraceStatus;
+use std::thread::Thread;
+use std::thread::ThreadId;
 use std::borrow::Cow;
 
 
