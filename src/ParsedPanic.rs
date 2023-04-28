@@ -36,7 +36,7 @@ impl<'panic_info> ParsedPanic<'panic_info>
 	}
 
 	#[inline(always)]
-	fn parse(panic_payload: &'panic_info (dyn Any + Send), location: Option<&'panic_info Location<'panic_info>>) -> Self
+	fn parse(panic_payload: &'panic_info dyn Any, location: Option<&'panic_info Location<'panic_info>>) -> Self
 	{
 		let thread_causing_panic = thread::current();
 
