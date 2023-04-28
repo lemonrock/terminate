@@ -20,7 +20,7 @@ impl<PPEL: ParsedPanicErrorLogger> Terminate for SimpleTerminate<PPEL>
 	}
 
 	#[inline(always)]
-	fn begin_termination_due_to_irrecoverable_error(&self, panic_payload: &(dyn Any + Send), location: Option<&Location>)
+	fn begin_termination_due_to_irrecoverable_error(&self, panic_payload: &dyn Any, location: Option<&Location>)
 	{
 		self.compare_and_swap(Self::PanicTerminate);
 		let parsed_panic = ParsedPanic::parse(panic_payload, location);

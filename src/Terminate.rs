@@ -23,7 +23,7 @@ pub trait Terminate: Send + Sync
 	///
 	/// `irrecoverable_error` is the same type as `PanicInfo.payload`.
 	/// `location` can be `None`.
-	fn begin_termination_due_to_irrecoverable_error(&self, irrecoverable_error: &(dyn Any + Send), location: Option<&Location>);
+	fn begin_termination_due_to_irrecoverable_error(&self, irrecoverable_error: &dyn Any, location: Option<&Location>);
 
 	/// Should finish.
 	fn should_finish(&self) -> bool;

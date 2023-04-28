@@ -4,7 +4,7 @@
 
 /// What caused the panic?
 #[inline(always)]
-pub fn panic_payload_to_cause<'panic_info>(panic_payload: &'panic_info (dyn Any + 'static + Send)) -> &'panic_info str
+pub fn panic_payload_to_cause<'panic_info>(panic_payload: &'panic_info dyn Any) -> &'panic_info str
 {
 	if panic_payload.is::<String>()
 	{
